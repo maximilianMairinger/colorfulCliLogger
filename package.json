@@ -15,7 +15,7 @@
     "build": "del-cli app/dist && concurrently \"npm run buildESM\" \"npm run buildCJS\" --raw",
     "buildESM": "tsc -p ./tsconfig.prod.esm.json && mjsify app/dist esm cjs",
     "buildCJS": "tsc -p ./tsconfig.prod.cjs.json && npm run buildCJS2",
-    "buildCJS2": "rollup --config rollup.cjs.prod.config.mjs",
+    "buildCJS2": "node tryCjsRollup.mjs",
     "dev": "npm run devNode",
     "devWeb": "concurrently \"rollup --config rollup.web.dev.config.mjs -w\" \"node devServer.mjs\" --raw ",
     "devNode": "concurrently \"rollup --config rollup.node.dev.config.mjs -w\" \"wait-on repl/dist/crossPlatformSpecs-repl.js && echo && echo Run \\'npm run repl\\' to run repl.\" --raw",
@@ -30,10 +30,10 @@
     "url": "git+https://github.com/maximilianMairinger/colorfulCliLogger.git"
   },
   "keywords": [
-  "colorful",
-  "cli",
-  "logger"
-],
+    "colorful",
+    "cli",
+    "logger"
+  ],
   "author": "maximilianMairinger",
   "license": "ISC",
   "bugs": {
@@ -47,6 +47,7 @@
     "@rollup/plugin-typescript": "^11.1.1",
     "@types/jest": "^26.0.15",
     "@types/node": "^13.13.4",
+    "builtins": "^5.0.1",
     "concurrently": "^8.0.1",
     "del-cli": "^5.0.0",
     "detect-port": "^1.5.1",
@@ -61,6 +62,7 @@
     "webpack-merge": "^5.0.9"
   },
   "dependencies": {
+    "chalk": "^5.2.0",
     "commander": "^10.0.1",
     "req-package-json": "^2.1.2"
   }
