@@ -1,4 +1,3 @@
-// import colorfulCliLogger from "../../app/src/colorfulCliLogger"
-// //const testElem = document.querySelector("#test")
+import * as console from "../../app/src/colorfulCliLogger"
 
-// colorfulCliLogger()
+console.log("lel")
