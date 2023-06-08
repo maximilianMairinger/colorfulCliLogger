@@ -65,12 +65,18 @@ const config = {
         ["exports", "node"],
         ["exports", "default"],
         ["exports", ".", "default"],
+        "exports",
         "main"
       ])
 
-      for (const val of vals) {
+      for (let val of vals) {
         if (typeof val !== "string") continue
         if (val.endsWith(".mjs")) continue
+        if (fs.existsSync(path.join("node_modules", mod, val))) {
+          if (fs.statSync(path.join("node_modules", mod, val)).isDirectory()) val = path.join(val, "index.js")
+          else val = val + ".js"
+          if (!fs.existsSync(path.join("node_modules", mod, val))) continue
+        }
         if (!val.endsWith(".js")) continue
 
         const fileContent = fs.readFileSync(path.join("node_modules", mod, val), "utf8")

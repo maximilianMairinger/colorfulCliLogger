@@ -1,4 +1,4 @@
-import * as chalk from "chalk"
+import chalk from "chalk"
 
 let verbose = false
 let testEnv = false
@@ -69,6 +69,6 @@ function go(severity: 0 | 1, prefix: string, kind: string, color: string, msg: a
   
 
   let lmsg = msg[msg.length-1]
-  if (typeof lmsg === "string" && lmsg.substr(lmsg.length-1) === "\n") last = ""
+  if (typeof lmsg === "string" && lmsg.substring(lmsg.length-1) === "\n") last = ""
   else last = kind
 }
