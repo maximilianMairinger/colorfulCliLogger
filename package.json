@@ -1,6 +1,6 @@
 {
   "name": "colorful-cli-logger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple colorful logger for CLIs.",
   "main": "./app/dist/esm/colorfulCliLogger.mjs",
   "types": "./app/dist/esm/colorfulCliLogger.d.ts",
